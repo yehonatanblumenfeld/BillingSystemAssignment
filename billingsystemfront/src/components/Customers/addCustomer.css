@@ -1,0 +1,30 @@
+form{
+    width: 450px;
+} 
+div.form{
+    justify-content: center;
+    display: flex;
+}
+.myBtn{
+    justify-content: center;
+    display: flex;
+    width: 450px;
+}
+.myBtn:hover{
+    background-color: grey;
+    border-color: grey;
+    color: black;
+}
+
+input.currency{
+    width: 150px;
+}  
+label{
+    color: black;
+    text-decoration: wavy;
+    text-decoration-color: blue;
+    font-weight: bold;
+}
+label:hover{
+    color: blue;  
+}

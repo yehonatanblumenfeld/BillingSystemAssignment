@@ -1,0 +1,26 @@
+.elementBox{
+    display: block;
+    justify-content: center; 
+    background-color: white;
+    width: 450px;
+    border-spacing: 5px;
+}
+.elementBox:hover{
+    background-color:rgb(199, 198, 198);
+}
+button{
+    width: 100px;  
+}
+ .card {
+    width: 18rem;
+    margin: 1px auto; 
+    float:left ; 
+    margin-bottom:1px; 
+    margin-right: 58px;
+    margin-left: 58px; 
+} 
+.card-title{
+    
+    font-size: 30px;
+    font-weight: bold;
+}

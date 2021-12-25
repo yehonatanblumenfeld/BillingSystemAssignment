@@ -1,0 +1,46 @@
+# POST http://localhost:9000/transactions/addTransaction
+# Content-Type: application/json
+
+# {
+#     "customer_id": "813-86-3131",
+#     "first_name": "Benedikt",
+#     "last_name": "Abberley",
+#     "email": "babberley0@artisteer.com",
+#     "gender": "Male",
+#     "country": "Nicaragua",
+#     "city": "San Jorge",
+#     "street": "415 Green Lane",
+#     "phone": "887-564-6105",
+#     "total_price": "1329.12",
+#     "currency": "NIO",
+#     "cerdit_card_type": "mastercard",
+#     "cerdit_card_number": "5010126046192324"
+#   }
+  
+# POST http://localhost:9000/customers/addCustomer
+# Content-Type: application/json
+
+# {
+#     "customer_id": "813-83-3131",
+#     "first_name": "yehonatan",
+#     "last_name": "Abbeley",
+#     "email": "babberley0@artisteer.com",
+#     "gender": "Male",
+#     "country": "Nicaragua"
+#  }
+  
+# GET http://localhost:9000/read
+# Content-Type: application/json
+
+# GET http://localhost:9000/customers/getCustomers
+# Content-Type: application/json
+
+# GET http://localhost:9000/transactions/getTransactionById/4
+# Content-Type: application/json
+
+put http://localhost:9000/transactions/updateTransaction/2
+Content-Type: application/json
+
+
+
+  
