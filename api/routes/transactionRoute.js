@@ -40,7 +40,7 @@ router.get('/getTransactions', (req, res) => {
 });
 
 router.get('/getTransactionById/:id', (req, res) => {
-    const id = req.params.id;
+    const id = req.params.id.toString();
     transactionTemplateCopy.findById(id, (err, result) => {
         if (err) {
             res.send(err);

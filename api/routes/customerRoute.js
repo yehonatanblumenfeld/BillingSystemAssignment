@@ -41,9 +41,10 @@ router.get('/getCustomerById/:id', (req, res) => {
 });
 
 router.put('/updateCustomer/:id', async (req, res) => {
-    const id = req.params.id;
+    const id = req.params.id.toString();
+    console.log(id);
     try {
-        await customerTemplateCopy.findById(id, (err,customer) => {
+        await customerTemplateCopy.findById( id , (err,customer) => {
             customer.customer_id= req.body.customer_id
             customer.first_name= req.body.first_name
             customer.last_name= req.body.last_name

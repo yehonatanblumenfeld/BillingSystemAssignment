@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Transactions/addTransactions.css';
 import axios from 'axios';
-import { useParams } from "react-router";
-
-
+import { useNavigate, useParams } from "react-router";
 
 const AddTransaction = () => {
 
@@ -23,8 +21,9 @@ const AddTransaction = () => {
     const [currency, setCurrency] = useState('');
     const [cerdit_card_type, setCerdit_card_type] = useState('');
     const [cerdit_card_number, setCerdit_card_number] = useState('');
-    const [inUpdateMode, setInUpdateMode] = useState(false);
+
     const { id } = useParams();
+    const navigate = useNavigate();
 
     function onSubmit(event) {
         event.preventDefault();
@@ -44,12 +43,7 @@ const AddTransaction = () => {
             cerdit_card_type: cerdit_card_type,
             cerdit_card_number: cerdit_card_number
         };
-        // if(this.inUpdateMode){
-        //     axios.put('http://localhost:9000/transactions/UpdateTransaction' , transaction)
-        //     .then(response => console.log(response.data));
-        //     inUpdateMode = false;           
 
-        // }else{
         axios.post('http://localhost:9000/transactions/addTransaction', updatedTransaction)
             .then(response => console.log(response.data));
 
@@ -67,9 +61,8 @@ const AddTransaction = () => {
         setCerdit_card_type('');
         setCerdit_card_number('');
 
-        window.location = "/showTransactions";
 
-
+        navigate("/showTransactions");
     }
 
     return (
@@ -77,73 +70,73 @@ const AddTransaction = () => {
         <div className="container form">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label for="customerId">Customer ID {id} </label>
+                    <label htmlFor="customerId">Customer ID {id} </label>
                     <input onChange={(event) => { setCustomer_id(event.target.value) }} required={true} type="text" className="form-control" id="customerId" placeholder="Enter ID" />
                 </div>
 
                 <div className="form-group">
-                    <label for="firstName">First Name</label>
+                    <label htmlFor="firstName">First Name</label>
                     <input onChange={(event) => { setFirst_name(event.target.value) }} required={true} type="text" className="form-control" id="firstName" placeholder="Enter first name" />
                 </div>
 
                 <div className="form-group">
-                    <label for="lastName">Last Name</label>
+                    <label htmlFor="lastName">Last Name</label>
                     <input onChange={(event) => { setLast_name(event.target.value) }} required={true} type="text" className="form-control" id="lastName" placeholder="Enter Last name" />
                 </div>
 
                 <div className="form-group">
-                    <label for="Email">Email address</label>
+                    <label htmlFor="Email">Email address</label>
                     <input onChange={(event) => { setEmail(event.target.value) }} required={true} type="email" className="form-control" id="Email" placeholder="Enter email" />
                 </div>
 
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <label className="input-group-text" for="GenderSelect">Gender</label>
+                        <label className="input-group-text" htmlFor="GenderSelect">Gender</label>
                     </div>
                     <select onChange={(event) => { setGender(event.target.value) }} required={true} className="custom-select" id="GenderSelect">
-                        <option selected>Choose...</option>
+                        <option >choose..</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
 
                 <div className="form-group">
-                    <label for="country">Country</label>
+                    <label htmlFor="country">Country</label>
                     <input onChange={(event) => { setCountry(event.target.value) }} required={true} type="text" className="form-control" id="country" placeholder="Enter country" />
                 </div>
 
                 <div className="form-group">
-                    <label for="City">City</label>
+                    <label htmlFor="City">City</label>
                     <input onChange={(event) => { setCity(event.target.value) }} required={true} type="text" className="form-control" id="City" placeholder="Enter City" />
                 </div>
 
                 <div className="form-group">
-                    <label for="street">Street</label>
+                    <label htmlFor="street">Street</label>
                     <input onChange={(event) => { setStreet(event.target.value) }} required={true} type="text" className="form-control" id="street" placeholder="Enter Street" />
                 </div>
 
                 <div className="form-group">
-                    <label for="phone">Phone</label>
+                    <label htmlFor="phone">Phone</label>
                     <input onChange={(event) => { setPhone(event.target.value) }} required={true} type="tel" className="form-control" id="phone" placeholder="Enter Phone" />
                 </div>
 
                 <div className="form-group">
-                    <label for="totalPrice">Total Price</label>
+                    <label htmlFor="totalPrice">Total Price</label>
                     <input onChange={(event) => { setTotal_price(event.target.value) }} required={true} className="currency" type="number" min="0.00" step="0.01" id="totalPrice" placeholder="Enter Total Price" />
                 </div>
 
                 <div className="form-group">
-                    <label for="currency">Currency</label>
+                    <label htmlFor="currency">Currency</label>
                     <input onChange={(event) => { setCurrency(event.target.value) }} required={true} type="text" maxLength="3" className="form-control" id="currency" placeholder="Enter Currency" />
                 </div>
 
                 <div className="form-group">
-                    <label for="creditCardType">Credit card type</label>
+                    <label htmlFor="creditCardType">Credit card type</label>
                     <input onChange={(event) => { setCerdit_card_type(event.target.value) }} required={true} type="text" className="form-control" id="creditCardType" placeholder="Enter Credit card type" />
                 </div>
 
                 <div className="form-group">
-                    <label for="creditCardNumber">Credit Card Number</label>
+                    <label htmlFor="creditCardNumber">Credit Card Number</label>
                     <input onChange={(event) => { setCerdit_card_number(event.target.value) }} required={true} type="number" minLength="8" maxLength="16" className="form-control" id="creditCardNumber" placeholder="Enter Credit Card Number" />
                 </div>
 

@@ -5,16 +5,17 @@ import NavManu from "./NavManu";
 
 class Layout extends React.Component {
 
-    
-  static displayname = Layout.name;  
-    render(){
-        return(    
-        <div>
+
+  static displayname = Layout.name;
+  render() {
+    return (
+      <div>
         <NavManu></NavManu>
         <Container>
-            {this.props.children}
+          {this.props.children}
         </Container>
-        </div>
-        )}       
+      </div>
+    )
+  }
 }
 export default Layout;

@@ -4,10 +4,9 @@ import { useState } from 'react/cjs/react.development';
 export const myContext = React.createContext();
 
 const Store = ({children}) => {
-    const[storeElement , setStoreElement] = useState(10);
-
+    const[storeElement , setStoreElement] = useState({});
     return (
-        <myContext.Provider value={[storeElement , setStoreElement]}>
+        <myContext.Provider value={{storeElement , setStoreElement}}>
             {children}
         </myContext.Provider>
     )

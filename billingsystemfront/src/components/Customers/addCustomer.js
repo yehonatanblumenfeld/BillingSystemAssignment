@@ -12,7 +12,7 @@ const AddCustomer = () => {
     const [email, setEmail] = useState('');
     const [gender, setGender] = useState('');
     const [country, setCountry] = useState('');
-    const [inUpdateMode, setInUpdateMode] = useState(false);
+
     const { id } = useParams();
 
 
@@ -42,38 +42,38 @@ const AddCustomer = () => {
         <div className="container form">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label for="customerId">Customer ID {id}</label>
+                    <label htmlFor="customerId">Customer ID {id}</label>
                     <input onChange={(event) => { setCustomer_id(event.target.value) }} required={true} type="text" className="form-control" id="customerId" placeholder="Enter ID" />
                 </div>
 
                 <div className="form-group">
-                    <label for="firstName">First Name</label>
+                    <label htmlFor="firstName">First Name</label>
                     <input onChange={(event) => { setFirst_name(event.target.value) }} required={true} type="text" className="form-control" id="firstName" placeholder="Enter first name" />
                 </div>
 
                 <div className="form-group">
-                    <label for="lastName">Last Name</label>
+                    <label htmlFor="lastName">Last Name</label>
                     <input onChange={(event) => { setLast_name(event.target.value) }} required={true} type="text" className="form-control" id="lastName" placeholder="Enter Last name" />
                 </div>
 
                 <div className="form-group">
-                    <label for="Email">Email address</label>
+                    <label htmlFor="Email">Email address</label>
                     <input onChange={(event) => { setEmail(event.target.value) }} required={true} type="email" className="form-control" id="Email" placeholder="Enter email" />
                 </div>
 
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <label className="input-group-text" for="GenderSelect">Gender</label>
+                        <label className="input-group-text" htmlFor="GenderSelect" >Gender</label>
                     </div>
                     <select onChange={(event) => { setGender(event.target.value) }} required={true} className="custom-select" id="GenderSelect">
-                        <option selected>Choose...</option>
+                        <option  >choose..</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
 
                 <div className="form-group">
-                    <label for="country">Country</label>
+                    <label htmlFor="country">Country</label>
                     <input onChange={(event) => { setCountry(event.target.value) }} required={true} type="text" className="form-control" id="country" placeholder="Enter country" />
                 </div>
 

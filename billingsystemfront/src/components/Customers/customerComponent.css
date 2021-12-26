@@ -1,13 +1,11 @@
+.myDiv:hover{
+    background-color: grey;
+}
 button{
     width: 100px;  
 }
- .card {
- 
-     margin-top: 10px;  
-} 
-.card-title{
-    
-    font-size: 30px;
+.card-title{   
+    font-size: 35px;
     font-weight: bold;
 }
 .contentDiv{  
@@ -21,6 +19,8 @@ button{
 .btns{
     gap:40px;
     justify-content: center;
-    display: flex;
+    display: flex;   
 }
-
+.btns button{
+    width: 100px;
+}
