@@ -4,4 +4,4 @@ DATABASE_ACCESS = "mongodb+srv://user:password@host/DBname?retryWrites=true&w=ma
 * run npm start on both api and frontend folders
 
 ### TODO
-* writing microServices in the server side , and only calling the functions inside the router Crud without any logic in them
+* writing microServices in the server side 
