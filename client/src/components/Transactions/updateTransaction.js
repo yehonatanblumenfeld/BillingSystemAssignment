@@ -6,29 +6,54 @@ import { myContext } from "../../store/store";
 import { useNavigate } from "react-router";
 
 const UpdateTransaction = () => {
-    const { storeElement } = useContext(myContext);
+    const { storeElement ,setStoreElement } = useContext(myContext);
 
-    const [customer_id, setCustomer_id] = useState(storeElement.customer_id);
-    const [first_name, setFirst_name] = useState(storeElement.first_name);
-    const [last_name, setLast_name] = useState(storeElement.last_name);
-    const [email, setEmail] = useState(storeElement.email);
-    const [gender, setGender] = useState(storeElement.gender);
-    const [country, setCountry] = useState(storeElement.country);
-    const [city, setCity] = useState(storeElement.city);
-    const [street, setStreet] = useState(storeElement.street);
-    const [phone, setPhone] = useState(storeElement.phone);
-    const [total_price, setTotal_price] = useState(storeElement.total_price);
-    const [currency, setCurrency] = useState(storeElement.currency);
-    const [cerdit_card_type, setCerdit_card_type] = useState(storeElement.cerdit_card_type);
-    const [cerdit_card_number, setCerdit_card_number] = useState(storeElement.cerdit_card_number);
+    const [transaction, setCustomer] = useState(storeElement);
+
+    const [customer_id, setCustomer_id] = useState(transaction.customer_id);
+    const [first_name, setFirst_name] = useState(transaction.first_name);
+    const [last_name, setLast_name] = useState(transaction.last_name);
+    const [email, setEmail] = useState(transaction.email);
+    const [gender, setGender] = useState(transaction.gender);
+    const [country, setCountry] = useState(transaction.country);
+    const [city, setCity] = useState(transaction.city);
+    const [street, setStreet] = useState(transaction.street);
+    const [phone, setPhone] = useState(transaction.phone);
+    const [total_price, setTotal_price] = useState(transaction.total_price);
+    const [currency, setCurrency] = useState(transaction.currency);
+    const [cerdit_card_type, setCerdit_card_type] = useState(transaction.cerdit_card_type);
+    const [cerdit_card_number, setCerdit_card_number] = useState(transaction.cerdit_card_number);
 
     const navigate = useNavigate();
+
+    const updateFormValues=(element)=>{
+        setCustomer_id(element.customer_id);
+        setFirst_name(element.first_name);
+        setLast_name(element.last_name);
+        setEmail(element.email);
+        setGender(element.gender);
+        setCountry(element.country);
+        setCity(element.city);
+        setStreet(element.street);
+        setPhone(element.phone);
+        setTotal_price(element.total_price);
+        setCurrency(element.currency);
+        setCerdit_card_type(element.cerdit_card_type);
+        setCerdit_card_number(element.cerdit_card_number);
+    }
+    useEffect(() => {
+        const localElement = localStorage.getItem('formValues');
+        updateFormValues(JSON.parse(localElement));
+     },[]);
+
+    useEffect(() => {
+        
+        localStorage.setItem('formValues' , JSON.stringify(transaction));
+     });
 
     function onSubmit(event) {
         event.preventDefault();
         
-
-
         const updatedTransaction = {
             customer_id: customer_id,
             first_name: first_name,
@@ -72,7 +97,7 @@ const UpdateTransaction = () => {
             <form onSubmit={onSubmit}>
 
                 <div className="form-group">
-                    <label htmlFor="customerId">Customer ID {storeElement._id} </label>
+                    <label htmlFor="customerId">Customer ID</label>
                     <input onChange={(event) => { setCustomer_id(event.target.value) }} value={customer_id} required={true} type="text" className="form-control" id="customerId" placeholder="Enter ID" />
                 </div>
 

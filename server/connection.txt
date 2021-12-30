@@ -1,0 +1,2 @@
+DATABASE connnection string = "mongodb+srv://user:password@host/DBname?retryWrites=true&w=majority"
+real access will given in email(yoniblu12@gmail.com)

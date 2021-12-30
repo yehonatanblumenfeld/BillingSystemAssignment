@@ -6,15 +6,7 @@ import { myContext } from "../../store/store";
 
 const ShowCustomers = () => {
       const [customersList, setCustomersList] = useState([]);
-      const {afterChange , setAfterChange} =useContext(myContext);
-
-      if(afterChange){
-            axios.get('http://localhost:9000/customers/getCustomers').then((response) => {
-                  setCustomersList(response.data);
-            });
-            setAfterChange(false);
-        }
-
+   
       useEffect(async () => {
             await axios.get('http://localhost:9000/customers/getCustomers').then((response) => {
                   setCustomersList(response.data);

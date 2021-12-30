@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const transactionTemplateCopy = require('../models/transactionModel');
 const transactionController = require('../controllers/transaction.controller')
 
 

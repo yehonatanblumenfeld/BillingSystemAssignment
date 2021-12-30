@@ -7,19 +7,8 @@ import { myContext } from "../../store/store";
 
 
 const ShowTransactions = () => {
-    const {afterChange , setAfterChange} =useContext(myContext);
     const [transactionsList, setTransactionsList] = useState([]);
-    
-    
-
-    if(afterChange){
-        console.log("after change = " , afterChange);
-        axios.get('http://localhost:9000/transactions/getTransactions').then((response) => {
-            setTransactionsList(response.data);
-        });
-        setAfterChange(false);
-    }
-   
+     
     useEffect(() => {
         axios.get('http://localhost:9000/transactions/getTransactions').then((response) => {
             setTransactionsList(response.data);

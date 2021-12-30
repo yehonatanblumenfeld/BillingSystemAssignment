@@ -9,15 +9,31 @@ import { myContext } from "../../store/store";
 
 const UpdateCustomer = () => {
     const { storeElement } = useContext(myContext);
-
-    const [customer_id, setCustomer_id] = useState(storeElement.customer_id);
-    const [first_name, setFirst_name] = useState(storeElement.first_name);
-    const [last_name, setLast_name] = useState(storeElement.last_name);
-    const [email, setEmail] = useState(storeElement.email);
-    const [gender, setGender] = useState(storeElement.gender);
-    const [country, setCountry] = useState(storeElement.country);
+     const[customer ,setCustomer] = useState(storeElement);
+    const [customer_id, setCustomer_id] = useState(customer.customer_id);
+    const [first_name, setFirst_name] = useState(customer.first_name);
+    const [last_name, setLast_name] = useState(customer.last_name);
+    const [email, setEmail] = useState(customer.email);
+    const [gender, setGender] = useState(customer.gender);
+    const [country, setCountry] = useState(customer.country);
 
     const navigate = useNavigate();
+    const updateFormValues=(element)=>{
+        setCustomer_id(element.customer_id);
+        setFirst_name(element.first_name);
+        setLast_name(element.last_name);
+        setEmail(element.email);
+        setGender(element.gender);
+        setCountry(element.country);
+    }
+    useEffect(() => {
+        const localElement = localStorage.getItem('formValues');
+        updateFormValues(JSON.parse(localElement));
+     },[]);
+
+    useEffect(() => {     
+        localStorage.setItem('formValues' , JSON.stringify(storeElement));
+     });
 
     function onSubmit(event) {
         event.preventDefault();
@@ -44,14 +60,13 @@ const UpdateCustomer = () => {
 
         window.location = '/showCustomers';
     }
-
     return (
 
         <div className="container form">
             <form onSubmit={onSubmit}>
 
                 <div className="form-group">
-                    <label htmlFor="customerId">Customer ID {customer_id} </label>
+                    <label htmlFor="customerId">Customer ID </label>
                     <input onChange={(event) => { setCustomer_id(event.target.value) }} value={customer_id} required={true} type="text" className="form-control" id="customerId" placeholder="Enter ID" />
                 </div>
 

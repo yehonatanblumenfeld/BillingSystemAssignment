@@ -1,5 +1,4 @@
 var transactionService = require('../services/transactions.service');
-const transactionTemplateCopy = require('../models/transactionModel');
 
 
 exports.addTransaction = async (req, res) => {

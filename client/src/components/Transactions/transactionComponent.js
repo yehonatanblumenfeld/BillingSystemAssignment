@@ -10,7 +10,7 @@ const TransactionComponent = (props) => {
 
     const id = props.propList._id;
     const navigate = useNavigate();
-    const { setStoreElement , setAfterChange } = useContext(myContext);
+    const { setStoreElement } = useContext(myContext);
     
     const onEdit = async () => {
 
@@ -25,7 +25,7 @@ const TransactionComponent = (props) => {
             .then(response => {
                 alert(`Transactions of ${props.propList.first_name} ${props.propList.last_name}  has been deleted`);
             });
-             setAfterChange(true);
+            window.location="/showTransactions" ;
     }
     return (
 
