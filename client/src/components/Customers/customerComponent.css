@@ -1,9 +1,14 @@
-.myDiv:hover{
-    background-color: grey;
+.maindiv{
+    justify-content: center;
+    display: flex;
+    border-color: black;
+    border-width: 2px;
 }
-button{
-    width: 100px;  
+.myCard{
+    width: 600px;
+    background-color: honeydew;
 }
+
 .card-title{   
     font-size: 35px;
     font-weight: bold;

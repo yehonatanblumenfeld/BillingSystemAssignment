@@ -29,6 +29,8 @@ const CustomerComponent = (props) => {
     return (
         <div className="maindiv">
             <div className="card text-center">
+                
+                <div className="myCard">
                 <div className="card-title">
                     {props.propList.first_name + " " + props.propList.last_name}
                 </div>
@@ -41,6 +43,7 @@ const CustomerComponent = (props) => {
                 <div className="btns">
                     <button onClick={onEdit} className="btn btn-primary myBtn">Edit</button>
                     <button onClick={onDelete} className="btn btn-secondary myBtn">Delete</button>
+                </div>
                 </div>
 
             </div>
