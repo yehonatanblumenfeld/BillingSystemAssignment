@@ -5,8 +5,10 @@ export const myContext = React.createContext();
 
 const Store = ({children}) => {
     const[storeElement , setStoreElement] = useState({});
+    const[afterChange , setAfterChange] = useState({});
+    
     return (
-        <myContext.Provider value={{storeElement , setStoreElement}}>
+        <myContext.Provider value={{storeElement , setStoreElement ,afterChange , setAfterChange}}>
             {children}
         </myContext.Provider>
     )

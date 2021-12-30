@@ -42,7 +42,7 @@ const UpdateCustomer = () => {
         setGender('');
         setCountry('');
 
-        navigate("/showCustomers")
+        window.location = '/showCustomers';
     }
 
     return (

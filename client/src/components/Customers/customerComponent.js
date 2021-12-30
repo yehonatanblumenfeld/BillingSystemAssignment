@@ -7,7 +7,7 @@ import { myContext } from "../../store/store";
 
 
 const CustomerComponent = (props) => {
-    const { setStoreElement } = useContext(myContext);
+    const { setStoreElement ,setAfterChange } = useContext(myContext);
     const id = props.propList._id
     const navigate = useNavigate();
 
@@ -23,7 +23,8 @@ const CustomerComponent = (props) => {
             .then(response => {
                 alert(`Customer of ${props.propList.first_name} ${props.propList.last_name}  has been deleted`);
             })
-    };
+            setAfterChange(true);    
+        };
 
     return (
         <div className="maindiv">

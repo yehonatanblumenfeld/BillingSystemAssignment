@@ -26,6 +26,8 @@ const UpdateTransaction = () => {
 
     function onSubmit(event) {
         event.preventDefault();
+        
+
 
         const updatedTransaction = {
             customer_id: customer_id,
@@ -45,7 +47,7 @@ const UpdateTransaction = () => {
 
         axios.put(`http://localhost:9000/transactions/updateTransaction/${storeElement._id}`, updatedTransaction)
             .then(response => console.log(response.data));
-
+        
         setCustomer_id('');
         setFirst_name('');
         setLast_name('');
@@ -60,7 +62,8 @@ const UpdateTransaction = () => {
         setCerdit_card_type('');
         setCerdit_card_number('');
 
-        navigate("/showTransactions")
+          
+        window.location="/showTransactions";
     }
 
     return (

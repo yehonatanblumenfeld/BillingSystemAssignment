@@ -10,8 +10,8 @@ const TransactionComponent = (props) => {
 
     const id = props.propList._id;
     const navigate = useNavigate();
-    const { setStoreElement } = useContext(myContext);
-
+    const { setStoreElement , setAfterChange } = useContext(myContext);
+    
     const onEdit = async () => {
 
         const tran = await (await axios.get(`http://localhost:9000/transactions/getTransactionById/${id}`)).data
@@ -25,7 +25,7 @@ const TransactionComponent = (props) => {
             .then(response => {
                 alert(`Transactions of ${props.propList.first_name} ${props.propList.last_name}  has been deleted`);
             });
-
+             setAfterChange(true);
     }
     return (
 

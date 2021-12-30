@@ -1,17 +1,30 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState  } from "react";
 import TransactionComponent from "./transactionComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { myContext } from "../../store/store";
+
+
 
 const ShowTransactions = () => {
-
+    const {afterChange , setAfterChange} =useContext(myContext);
     const [transactionsList, setTransactionsList] = useState([]);
+    
+    
 
+    if(afterChange){
+        console.log("after change = " , afterChange);
+        axios.get('http://localhost:9000/transactions/getTransactions').then((response) => {
+            setTransactionsList(response.data);
+        });
+        setAfterChange(false);
+    }
+   
     useEffect(() => {
         axios.get('http://localhost:9000/transactions/getTransactions').then((response) => {
             setTransactionsList(response.data);
         });
-    }, [transactionsList]);
+    }, []);
 
     return (
         <div className="container">

@@ -2,7 +2,7 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import AddTransaction from './components/Transactions/addTransactions';
 import Layout from './components/LayOut';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import UpdateTransactions from './components/Transactions/updateTransaction';
 import ShowTransactions from './components/Transactions/showTransactions';
 import AddCustomer from './components/Customers/addCustomer';
@@ -20,6 +20,7 @@ const App = () => {
         <div>
           <Layout>
             <Routes>
+              <Route path="/" element={<ShowTransactions/>} />
               <Route path="/addTransaction" element={<AddTransaction />} />
               <Route path="/updateTransaction" element={<UpdateTransactions />} />
               <Route path="/showTransactions" element={<ShowTransactions />} />
@@ -31,7 +32,7 @@ const App = () => {
           </Layout>
         </div>
       </Router>
-      </Store>
+    </Store>
 
 
   );
