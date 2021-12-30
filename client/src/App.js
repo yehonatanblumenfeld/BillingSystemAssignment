@@ -8,12 +8,10 @@ import ShowTransactions from './components/Transactions/showTransactions';
 import AddCustomer from './components/Customers/addCustomer';
 import UpdateCustomer from './components/Customers/updateCustomer';
 import ShowCustomers from './components/Customers/showCustomers';
-
 import Store from './store/store';
 
 const App = () => {
-  console.log("app called");
-
+ 
   return (
     <Store>
       <Router>
@@ -23,7 +21,7 @@ const App = () => {
               <Route path="/" element={<ShowTransactions/>} />
               <Route path="/addTransaction" element={<AddTransaction />} />
               <Route path="/updateTransaction" element={<UpdateTransactions />} />
-              <Route path="/showTransactions" element={<ShowTransactions />} />
+              <Route path="/showTransactions" element={<ShowTransactions/>} />
 
               <Route path="/addCustomer" element={<AddCustomer />} />
               <Route path="/updateCustomer" element={<UpdateCustomer />} />

@@ -1,0 +1,10 @@
+.pageBtns{
+    gap: 2px;
+    justify-content: center;
+    display: flex;
+}
+button{
+    background-color: gray;
+    gap: 3px;
+    width: 50px;
+}
