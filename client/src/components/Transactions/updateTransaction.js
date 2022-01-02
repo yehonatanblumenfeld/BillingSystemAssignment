@@ -6,10 +6,11 @@ import { myContext } from "../../store/store";
 import { useNavigate } from "react-router";
 
 const UpdateTransaction = () => {
-    const { storeElement ,setStoreElement } = useContext(myContext);
+    const { storeElement, setStoreElement } = useContext(myContext);
 
-    const [transaction, setCustomer] = useState(storeElement);
+    const [transaction, setTransaction] = useState(storeElement);
 
+    const [id, setId] = useState(storeElement._id);
     const [customer_id, setCustomer_id] = useState(transaction.customer_id);
     const [first_name, setFirst_name] = useState(transaction.first_name);
     const [last_name, setLast_name] = useState(transaction.last_name);
@@ -26,7 +27,8 @@ const UpdateTransaction = () => {
 
     const navigate = useNavigate();
 
-    const updateFormValues=(element)=>{
+    const updateFormValues = (element) => {
+        setTransaction(element);
         setCustomer_id(element.customer_id);
         setFirst_name(element.first_name);
         setLast_name(element.last_name);
@@ -42,14 +44,19 @@ const UpdateTransaction = () => {
         setCerdit_card_number(element.cerdit_card_number);
     }
     useEffect(() => {
-        const localElement = localStorage.getItem('formValues');
-        updateFormValues(JSON.parse(localElement));
-     },[]);
+        if (transaction.customer_id == undefined) {
+            const localElement = localStorage.getItem('formValues');
+            const id = localStorage.getItem('tranID');         
+            updateFormValues(JSON.parse(localElement));
+            setId(JSON.parse(id))
+        }
+    }, []);
 
     useEffect(() => {
-        
-        localStorage.setItem('formValues' , JSON.stringify(transaction));
-     });
+
+        localStorage.setItem('formValues', JSON.stringify(transaction));
+        localStorage.setItem('tranID', JSON.stringify(storeElement._id));
+    });
 
     function onSubmit(event) {
         event.preventDefault();
@@ -69,10 +76,21 @@ const UpdateTransaction = () => {
             cerdit_card_type: cerdit_card_type,
             cerdit_card_number: cerdit_card_number
         };
+        console.log(updatedTransaction);
 
-        axios.put(`http://localhost:9000/transactions/updateTransaction/${storeElement._id}`, updatedTransaction)
-            .then(response => console.log(response.data));
-        
+
+        console.log(storeElement._id);
+        if(storeElement._id == undefined){
+            
+            console.log(id);
+            axios.put(`http://localhost:9000/transactions/updateTransaction/${id}`, updatedTransaction)
+                .then(response => console.log(response.data));
+
+        }else{
+            axios.put(`http://localhost:9000/transactions/updateTransaction/${storeElement._id}`, updatedTransaction)
+                .then(response => console.log(response.data));     
+        }
+
         setCustomer_id('');
         setFirst_name('');
         setLast_name('');
@@ -87,8 +105,8 @@ const UpdateTransaction = () => {
         setCerdit_card_type('');
         setCerdit_card_number('');
 
-          
-        window.location="/showTransactions";
+
+        window.location = "/showTransactions";
     }
 
     return (

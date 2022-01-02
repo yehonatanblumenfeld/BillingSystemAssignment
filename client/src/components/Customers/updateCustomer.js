@@ -9,7 +9,9 @@ import { myContext } from "../../store/store";
 
 const UpdateCustomer = () => {
     const { storeElement } = useContext(myContext);
-     const[customer ,setCustomer] = useState(storeElement);
+    
+    const [id, setId] = useState(storeElement._id);
+    const[customer ,setCustomer] = useState(storeElement);
     const [customer_id, setCustomer_id] = useState(customer.customer_id);
     const [first_name, setFirst_name] = useState(customer.first_name);
     const [last_name, setLast_name] = useState(customer.last_name);
@@ -27,12 +29,18 @@ const UpdateCustomer = () => {
         setCountry(element.country);
     }
     useEffect(() => {
-        const localElement = localStorage.getItem('formValues');
-        updateFormValues(JSON.parse(localElement));
+        if(customer.customer_id == undefined){
+            const localElement = localStorage.getItem('formValues'); 
+            const id = localStorage.getItem('custID');  
+            updateFormValues(JSON.parse(localElement)); 
+            setId(JSON.parse(id))
+        }       
      },[]);
 
     useEffect(() => {     
         localStorage.setItem('formValues' , JSON.stringify(storeElement));
+        localStorage.setItem('custID', JSON.stringify(storeElement._id));
+
      });
 
     function onSubmit(event) {
@@ -47,9 +55,16 @@ const UpdateCustomer = () => {
             country: country,
         };
 
-        axios.put(`http://localhost:9000/customers/updateCustomer/${storeElement._id}`, updatedCustomer)
-            .then(response => console.log(response.data));
-
+             if(storeElement._id == undefined){
+            
+                console.log(id);
+                axios.put(`http://localhost:9000/customers/updateCustomer/${id}`, updatedCustomer)
+                    .then(response => console.log(response.data));
+    
+            }else{
+                axios.put(`http://localhost:9000/customers/updateCustomer/${storeElement._id}`, updatedCustomer)
+                    .then(response => console.log(response.data));     
+            }
 
         setCustomer_id('');
         setFirst_name('');
